@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "7 Days of Brain Rot | Track Your Internet Descent",
-  description: "Experience the ultimate brain rot journey. From Skibidi Toilet to full sigma grindset - track your 7-day descent into internet madness. No cap, this is fr fr bussin.",
-  keywords: ["brain rot", "skibidi", "sigma", "rizz", "memes", "gen alpha", "internet culture"],
+  title: "7 Days to Clear Brain Rot | Digital Detox Program",
+  description: "Evidence-based 7-day recovery program to cure brain rot. Reclaim your focus, break doom-scrolling habits, and rebuild your attention span through proven neuroscience methods.",
+  keywords: ["brain rot cure", "digital detox", "screen addiction", "focus", "dopamine detox", "mental clarity", "productivity"],
   openGraph: {
-    title: "7 Days of Brain Rot",
-    description: "Track your descent into internet madness",
+    title: "7 Days to Clear Brain Rot",
+    description: "Evidence-based recovery program to reclaim your focus and mental clarity",
     type: "website",
   },
 };
