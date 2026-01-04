@@ -17,7 +17,7 @@ export default function FloatingQuote() {
     };
 
     changeQuote();
-    const interval = setInterval(changeQuote, 6000);
+    const interval = setInterval(changeQuote, 8000);
 
     return () => clearInterval(interval);
   }, []);
@@ -25,14 +25,18 @@ export default function FloatingQuote() {
   return (
     <div
       className={`
-        fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-6
-        bg-gradient-to-r from-emerald-600 to-teal-600
-        text-white px-5 py-3 rounded-full shadow-lg
-        transition-all duration-300 z-40 max-w-[90vw] md:max-w-md text-center
-        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}
+        fixed bottom-4 left-4 right-4 mx-auto max-w-md
+        bg-gray-800/95 backdrop-blur-sm border border-gray-700
+        text-white px-4 py-3 rounded-xl shadow-lg
+        transition-all duration-300 z-40
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}
       `}
+      style={{ marginBottom: 'env(safe-area-inset-bottom)' }}
     >
-      <span className="font-medium text-sm md:text-base">{quote}</span>
+      <div className="flex items-center gap-3">
+        <span className="text-emerald-400 text-lg">💬</span>
+        <p className="text-sm text-gray-200 flex-1">{quote}</p>
+      </div>
     </div>
   );
 }

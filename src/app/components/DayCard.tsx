@@ -25,48 +25,44 @@ export default function DayCard({
     <button
       onClick={onClick}
       className={`
-        relative w-full p-4 rounded-2xl transition-all duration-300 text-left
+        relative w-full h-full min-h-[120px] p-3 rounded-xl transition-all duration-200 text-left
         bg-gradient-to-br ${dayData.color}
-        ${isActive ? 'ring-4 ring-white/50 scale-105 shadow-2xl' : 'hover:scale-102 hover:shadow-xl'}
-        ${isCompleted ? 'opacity-90' : ''}
+        active:scale-95
+        ${isActive ? 'ring-2 ring-white/60 shadow-lg' : ''}
       `}
     >
-      {/* Completion badge */}
-      {isCompleted && (
-        <div className="absolute -top-2 -right-2 bg-green-500 text-white w-8 h-8 rounded-full flex items-center justify-center text-lg shadow-lg">
-          ✓
+      {/* Status badge */}
+      {(isCompleted || isActive) && (
+        <div className={`
+          absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full flex items-center justify-center text-xs shadow-md
+          ${isCompleted ? 'bg-green-500 text-white' : 'bg-white text-gray-900 font-bold'}
+        `}>
+          {isCompleted ? '✓' : isActive ? dayData.day : ''}
         </div>
       )}
 
-      {/* Active indicator */}
-      {isActive && !isCompleted && (
-        <div className="absolute -top-2 -right-2 bg-white text-black w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold shadow-lg animate-pulse">
-          NOW
-        </div>
-      )}
+      {/* Day number */}
+      <span className="text-white/70 text-xs font-medium">
+        Day {dayData.day}
+      </span>
 
-      <div className="flex items-center justify-between mb-2">
-        <span className="text-white/80 font-bold text-sm">Day {dayData.day}</span>
-      </div>
-
-      <h3 className="text-white font-bold text-lg mb-1 leading-tight">
+      {/* Title */}
+      <h3 className="text-white font-bold text-sm leading-tight mt-0.5 line-clamp-2">
         {dayData.title}
       </h3>
 
-      <p className="text-white/70 text-xs mb-3 line-clamp-1">
-        {dayData.theme}
-      </p>
-
-      {/* Progress bar */}
-      <div className="bg-black/20 rounded-full h-2 overflow-hidden">
-        <div
-          className="h-full bg-white/80 transition-all duration-500 rounded-full"
-          style={{ width: `${progress}%` }}
-        />
+      {/* Progress section */}
+      <div className="absolute bottom-3 left-3 right-3">
+        <div className="bg-black/20 rounded-full h-1.5 overflow-hidden mb-1">
+          <div
+            className={`h-full transition-all duration-500 rounded-full ${isCompleted ? 'bg-green-300' : 'bg-white/80'}`}
+            style={{ width: `${progress}%` }}
+          />
+        </div>
+        <span className="text-white/60 text-[10px]">
+          {completedTasks}/{totalTasks}
+        </span>
       </div>
-      <p className="text-white/60 text-xs mt-1">
-        {completedTasks}/{totalTasks} tasks
-      </p>
     </button>
   );
 }
